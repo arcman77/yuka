@@ -15394,6 +15394,8 @@
 
 			const centroid = this.centroid;
 			let edge = this.edge;
+			let antiCyleEdge = this.edge.next;
+
 			let count = 0;
 
 			centroid.set( 0, 0, 0 );
@@ -15405,8 +15407,9 @@
 				count ++;
 
 				edge = edge.next;
+				antiCyleEdge = antiCyleEdge.next.next;
 
-			} while ( edge !== this.edge );
+			} while ( edge !== this.edge && edge !== antiCyleEdge);
 
 			centroid.divideScalar( count );
 
@@ -15425,6 +15428,7 @@
 
 			const plane = this.plane;
 			let edge = this.edge;
+			let antiCyleEdge = this.edge.next;
 
 			// convex test
 
@@ -15440,8 +15444,9 @@
 				}
 
 				edge = edge.next;
+				antiCyleEdge = antiCyleEdge.next.next;
 
-			} while ( edge !== this.edge );
+			} while ( edge !== this.edge && edge !== antiCyleEdge);
 
 			// ensure the given point lies within a defined tolerance range
 
@@ -15503,6 +15508,7 @@
 
 			const plane = this.plane;
 			let edge = this.edge;
+			let antiCyleEdge = this.edge.next;
 
 			do {
 
@@ -15515,8 +15521,9 @@
 				}
 
 				edge = edge.next;
+				antiCyleEdge = antiCyleEdge.next.next;
 
-			} while ( edge !== this.edge );
+			} while ( edge !== this.edge && edge !== antiCyleEdge);
 
 			return true;
 
@@ -15545,6 +15552,7 @@
 		getContour( result ) {
 
 			let edge = this.edge;
+			let antiCyleEdge = this.edge.next;
 
 			result.length = 0;
 
@@ -15553,8 +15561,9 @@
 				result.push( edge.vertex );
 
 				edge = edge.next;
+				antiCyleEdge = antiCyleEdge.next.next;
 
-			} while ( edge !== this.edge );
+			} while ( edge !== this.edge && edge !== antiCyleEdge);
 
 			return result;
 
