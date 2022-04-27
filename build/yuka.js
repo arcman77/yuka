@@ -15485,7 +15485,7 @@
 				}
 
 				edge = edge.next;
-				antiCyleEdge = edge.next.next;
+				antiCyleEdge = antiCyleEdge.next.next;
 
 			} while ( edge !== this.edge && edge !== antiCyleEdge);
 
